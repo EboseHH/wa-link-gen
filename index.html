@@ -12,6 +12,7 @@
     <section id="details">
         <h1>Enter the details here</h1>
         <input id="provider" type="text" />
+        <input id="phone" type="text" />
         <input id="username" type="text" />
         <input id="password" type="text" />
 
@@ -25,11 +26,15 @@
     <script>
         document.querySelector('#generate').addEventListener('click', () => {
             const provider = document.querySelector('#provider').value
+            const phone = document.querySelector('#phone').value
             const username = document.querySelector('#username').value
             const password = document.querySelector('#password').value
 
+            const messages = [];
+
             const welcomeMessage = encodeURIComponent(`Good afternoon. I'm reaching out from Bolt Food. We are excited to have ${provider} on board. I'll be sharing all the information you need to get started on the Bolt Food platform.`)
-            const instructionsMessage = encodeURIComponent(`Kindly follow the instructions below to get started on the Bolt Food platform.%0aInstructions :
+            const instructionsMessage = encodeURIComponent(`Kindly follow the instructions below to get started on the Bolt Food platform.
+Instructions :
 
 1. Follow this link to download the Bolt Restaurant App from Google Play Store on your android device  https://play.google.com/store/apps/details?id=com.bolt.deliveryproviderapp.
 
@@ -43,8 +48,19 @@ Password: ${password}
 
 4. For more information on how to use the app, please go through the manual and videos below.`)
 
-console.log({welcomeMessage, instructionsMessage})
+
+const conclusionMessage = encodeURIComponent("Please let me know once you are done going through the info above. The app is really user friendly, please log in, go online and let me know if you have any questions. Once you're online, I'll go ahead to share the next steps")
+
+messages.push(welcomeMessage, instructionsMessage, conclusionMessage);
+
+const links = messages.map((message, index) => {
+    return `<a href="https://api.whatsapp.com/send?phone=${phone}&text=${message}">Message #${index+1}</a>`
+})
+
+document.querySelector("#links").innerHTML = links.join("");
         })
+
+    
     </script>
 </body>
 
