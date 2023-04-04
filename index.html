@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WA Link Generator</title>
+</head>
+<body>
+    <section id="details">
+        <h1>Enter the details here</h1>
+        <input id="provider" type="text" />
+        <input id="username" type="text" />
+        <input id="password" type="text" />
+    
+        <button id="generate">Generate Links</button>
+    </section>
+
+    <section id="links">
+
+    </section>
+
+    <script>
+        document.querySelector('#generate').addEventListener('click', () => {
+            const provider = document.querySelector('#provider').value
+            const username = document.querySelector('#username').value
+            const password = document.querySelector('#password').value
+
+            console.log({provider,username,password});
+        })
+    </script>
+</body>
+</html>
