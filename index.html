@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WA Link Generator</title>
 </head>
+
 <body>
     <section id="details">
         <h1>Enter the details here</h1>
         <input id="provider" type="text" />
         <input id="username" type="text" />
         <input id="password" type="text" />
-    
+
         <button id="generate">Generate Links</button>
     </section>
 
@@ -26,8 +28,24 @@
             const username = document.querySelector('#username').value
             const password = document.querySelector('#password').value
 
-            console.log({provider,username,password});
+            const welcomeMessage = encodeURIComponent(`Good afternoon. I'm reaching out from Bolt Food. We are excited to have ${provider} on board. I'll be sharing all the information you need to get started on the Bolt Food platform.`)
+            const instructionsMessage = encodeURIComponent(`Kindly follow the instructions below to get started on the Bolt Food platform.%0aInstructions :
+
+1. Follow this link to download the Bolt Restaurant App from Google Play Store on your android device  https://play.google.com/store/apps/details?id=com.bolt.deliveryproviderapp.
+
+2. Log in with your username and Password:
+
+Username:  ${username}
+
+Password: ${password}
+
+3. After logging in, click the "Go Online" button to ensure you are visible on the app and eaters can order from you.
+
+4. For more information on how to use the app, please go through the manual and videos below.`)
+
+console.log({welcomeMessage, instructionsMessage})
         })
     </script>
 </body>
+
 </html>
